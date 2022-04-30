@@ -1,17 +1,7 @@
 const Order = require('../models/order.model');
-const RestaurantBranch = require('../models/restaurantBranch.model');
 const Item = require('../models/items.model');
-const User = require('../models/user.model');
-const Restaurant = require('../models/restaurant.model');
 
-const addOrder = async (req, res) => {
-  try {
-    const { branch, items, user, address, restaurant } = req.body;
-
-    // check if address belong to user
-    const addressUser = await User.find({ address: { $in: [address] } });
-    if (!addressUser) return Promise.reject(Error('Cant find this address'));
-
+const addOrder = async (branchId, restaurant, items, userId, address) => {
     // check if item exist, available and belong to the same restaurant
     const itemsIds = items.map((e) => e.item);
 
@@ -25,16 +15,16 @@ const addOrder = async (req, res) => {
       return Promise.reject(Error('Some item may not available, or not exist'));
 
     const order = await Order.create({
-      branch,
+      branch: branchId,
       items,
-      user,
+      user: userId,
       address,
       restaurant,
     });
-    return res.status(200).json(order);
+
+    return order;
   } catch (error) {
-    return Promise.reject(err);
+    return Promise.reject(error);
   }
 };
-
 module.exports = { addOrder };

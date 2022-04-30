@@ -110,7 +110,7 @@ const getNearBranches = async (restId, addressId) => {
     const address = await Address.findById(addressId);
     const { coordinates } = address.address;
 
-    const nearBranches = await RestaurantBranch.find(
+    const nearBranches = await RestaurantBranch.findOne(
       {
         _id: { $in: branches },
         'address.coordinates': {
