@@ -4,6 +4,10 @@ const bcrypt = require('bcrypt');
 
 const signup = async (req) => {
   try {
+    // first user will be with admin role
+    const users = await User.count();
+    if (users === 0) req.body.role = 'admin';
+
     const user = await User.findOne({ email: req.body.email });
     if (user)
       return Promise.reject(Error('User with given email already exist'));
