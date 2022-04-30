@@ -47,6 +47,12 @@ const getavailableMenuItems = async (req, res) => {
     const perPage = req.query.perpage || 2;
     const restaurantId = req.params.restId;
 
+    const restaurant = await restaurantService.findById(restaurantId);
+    if (!restaurant)
+      return res
+        .status(422)
+        .json({ error: true, message: 'No Restaurant with given id' });
+
     const items = await restaurantService.getavailableMenuItems(
       restaurantId,
       currentPage,
