@@ -79,7 +79,21 @@ const setCategoryImage = async (req, res) => {
   } catch (err) {
     return res
       .status(500)
-      .json({ error: true, message: `internal server error ${err}` });
+      .json({ error: true, message: 'internal server error' });
+  }
+};
+
+const listCategories = async (req, res) => {
+  try {
+    const currentPage = req.query.page || 1;
+    const perPage = req.query.perpage || 2;
+    const categories = await menuService.listCategories(currentPage, perPage);
+
+    return res.status(200).json(categories);
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ error: true, message: 'internal server error' });
   }
 };
 /* End Menu Category */
@@ -217,6 +231,7 @@ module.exports = {
   updateCategory,
   deleteCategory,
   setCategoryImage,
+  listCategories,
 
   addItem,
   updateItem,

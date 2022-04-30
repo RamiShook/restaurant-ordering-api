@@ -77,6 +77,19 @@ const setCategoryImage = async (id, path) => {
     return Promise.reject(err);
   }
 };
+
+const listCategories = async (currentPage, perPage) => {
+  try {
+    const categories = await Category.find({}, { __v: 0 })
+      .skip((currentPage - 1) * perPage)
+      .limit(perPage);
+
+    return categories;
+  } catch (err) {
+    return Promise.reject(err);
+  }
+};
+
 /* End Menu Category */
 
 /* Menu Item */
@@ -193,6 +206,7 @@ module.exports = {
   updateCategory,
   deleteCategory,
   setCategoryImage,
+  listCategories,
 
   addItem,
   updateItem,

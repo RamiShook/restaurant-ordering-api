@@ -36,6 +36,12 @@ router.post(
   menuController.setCategoryImage,
 );
 
+router.get(
+  '/category',
+  authMiddlware.isLoggedIn,
+  menuController.listCategories,
+);
+
 /* End Menu Category */
 
 /* Menu Item */
