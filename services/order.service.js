@@ -2,6 +2,7 @@ const Order = require('../models/order.model');
 const Item = require('../models/items.model');
 
 const addOrder = async (branchId, restaurant, items, userId, address) => {
+  try {
     // check if item exist, available and belong to the same restaurant
     const itemsIds = items.map((e) => e.item);
 
