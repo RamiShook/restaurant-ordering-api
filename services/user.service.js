@@ -99,7 +99,10 @@ const getUserInfo = async (userId) => {
 
 const listAddresses = async (userId) => {
   try {
-    const user = await User.findById(userId, { address: 1 });
+    const user = await User.findById(userId, { address: 1 }).populate(
+      'address',
+      '-user -__v',
+    );
 
     return user;
   } catch (err) {
