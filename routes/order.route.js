@@ -6,4 +6,7 @@ const router = Router();
 
 router.post('/order', authMiddlware.isLoggedIn, orderController.addOrder);
 
+router.get('/order', authMiddlware.isLoggedIn, orderController.listOrders);
+
+router.put('/order/:id', authMiddlware.isLoggedIn, orderController.cancelOrder);
 module.exports = router;

@@ -28,4 +28,64 @@ const addOrder = async (branchId, restaurant, items, userId, address) => {
     return Promise.reject(error);
   }
 };
-module.exports = { addOrder };
+
+const listOrders = async (userId, status, currentPage, perPage) => {
+  try {
+    const orders = await Order.find({ user: userId, status })
+      .populate([
+        {
+          path: 'items.item',
+          select: ['name', 'price'],
+          populate: {
+            path: 'category',
+            model: 'Category',
+            select: 'name',
+          },
+        },
+        {
+          path: 'branch',
+          select: 'name',
+        },
+        {
+          path: 'address',
+          select: 'label',
+        },
+        {
+          path: 'restaurant',
+          select: 'name',
+        },
+      ])
+      .skip((currentPage - 1) * perPage)
+      .limit(perPage);
+
+    return orders;
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};
+
+const findById = async (orderId) => {
+  try {
+    const order = await Order.findById(orderId);
+    return order;
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};
+
+const cancelOrder = async (userId, orderId) => {
+  try {
+    const canceledOrder = await Order.findOneAndUpdate(
+      {
+        _id: orderId,
+        user: userId,
+      },
+      { status: 'canceled' },
+    );
+    return canceledOrder;
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};
+
+module.exports = { addOrder, findById, listOrders, cancelOrder };
