@@ -1,6 +1,6 @@
 /* eslint-disable object-shorthand */
 const menuService = require('../services/menu.service');
-const mongoose = require('mongoose');
+const { Types } = require('mongoose');
 const menuValidation = require('../validationSchemas/menuValidation.schema');
 
 /* Menu Category */
@@ -42,7 +42,7 @@ const updateCategory = async (req, res) => {
 const deleteCategory = async (req, res) => {
   try {
     id = req.params.id;
-    if (!mongoose.Types.ObjectId.isValid(id))
+    if (!Types.ObjectId.isValid(id))
       return res.status(422).json({ error: true, message: 'wrong id' });
 
     try {
@@ -61,7 +61,7 @@ const deleteCategory = async (req, res) => {
 
 const setCategoryImage = async (req, res) => {
   try {
-    if (!mongoose.Types.ObjectId.isValid(req.params.id))
+    if (!Types.ObjectId.isValid(req.params.id))
       return res.status(422).json({ error: true, message: 'wrong id' });
 
     try {
@@ -131,7 +131,7 @@ const updateItem = async (req, res) => {
         .status(400)
         .json({ error: true, message: error.details[0].message });
 
-    if (!mongoose.Types.ObjectId.isValid(req.params.id))
+    if (!Types.ObjectId.isValid(req.params.id))
       return res.status(422).json({ error: true, message: 'wrong id' });
 
     try {
@@ -152,7 +152,7 @@ const updateItem = async (req, res) => {
 const deleteItem = async (req, res) => {
   try {
     try {
-      if (!mongoose.Types.ObjectId.isValid(req.params.id))
+      if (!Types.ObjectId.isValid(req.params.id))
         return res.status(422).json({ error: true, message: 'wrong id' });
 
       await menuService.deleteItem(req.params.id);
@@ -169,7 +169,7 @@ const deleteItem = async (req, res) => {
 
 const setItemImage = async (req, res) => {
   try {
-    if (!mongoose.Types.ObjectId.isValid(req.params.id))
+    if (!Types.ObjectId.isValid(req.params.id))
       return res.status(422).json({ error: true, message: 'wrong id' });
 
     try {

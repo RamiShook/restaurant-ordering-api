@@ -1,10 +1,10 @@
 const userService = require('../services/user.service');
 const userValidation = require('../validationSchemas/userValidationSchema');
-const mongoose = require('mongoose');
+const { Types } = require('mongoose');
 
 const disableUser = async (req, res) => {
   try {
-    if (!mongoose.Types.ObjectId.isValid(req.params.id))
+    if (!Types.ObjectId.isValid(req.params.id))
       return res.status(422).json({ error: true, message: 'wrong user id' });
 
     await userService.disableUser(req.params.id);
@@ -81,7 +81,7 @@ const listAddresses = async (req, res) => {
 
 const deleteAddress = async (req, res) => {
   try {
-    if (!mongoose.Types.ObjectId.isValid(req.params.id))
+    if (!Types.ObjectId.isValid(req.params.id))
       return res.status(422).json({ error: true, message: 'wrong address id' });
 
     const userId = req.user._id;
@@ -106,7 +106,7 @@ const deleteAddress = async (req, res) => {
 
 const updateAddress = async (req, res) => {
   try {
-    if (!mongoose.Types.ObjectId.isValid(req.params.id))
+    if (!Types.ObjectId.isValid(req.params.id))
       return res.status(422).json({ error: true, message: 'wrong address id' });
 
     const { error } = userValidation.updateUserAddressValidation(req.body);

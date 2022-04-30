@@ -1,6 +1,6 @@
 const restaurantService = require('../services/restaurant.service');
 const restaurantValidation = require('../validationSchemas/restaurantValidation.schema');
-const mongoose = require('mongoose');
+const { Types } = require('mongoose');
 const { existUserAddressId } = require('../services/user.service');
 
 const addRestaurant = async (req, res) => {
@@ -92,7 +92,7 @@ const getAvailableItemsByCategory = async (req, res) => {
 };
 
 const getNearBranches = async (req, res) => {
-  if (!mongoose.Types.ObjectId.isValid(req.body.addressId))
+  if (!Types.ObjectId.isValid(req.body.addressId))
     return res.status(422).json({ error: true, message: 'wrong address id' });
 
   const { addressId } = req.body;
