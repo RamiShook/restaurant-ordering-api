@@ -2,9 +2,16 @@ const orderService = require('../services/order.service');
 const { existUserAddressId } = require('../services/user.service');
 const { getNearBranches } = require('../services/restaurant.service');
 const { Types } = require('mongoose');
+const orderValidation = require('../validationSchemas/ordervalidation.schema');
 
 const addOrder = async (req, res) => {
   try {
+    const { error } = orderValidation.addOrderValidation(req.body);
+    if (error)
+      return res
+        .status(400)
+        .json({ error: true, message: error.details[0].message });
+
     const userId = req.user._id;
     const { restaurant, items, address } = req.body;
 
@@ -38,6 +45,7 @@ const addOrder = async (req, res) => {
       return res.status(422).json({ error: true, message: e.message });
     }
   } catch (err) {
+    console.log(err);
     return res
       .status(500)
       .json({ error: true, message: 'internal server error' });

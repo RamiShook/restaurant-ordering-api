@@ -1,12 +1,17 @@
 const Joi = require('joi');
 
 const addOrderValidation = (body) => {
+  const items = Joi.object().keys({
+    item: Joi.string().hex().length(24).required(),
+    quantity: Joi.number().min(1).required(),
+  });
+
   const schema = Joi.object({
-    name: Joi.string().min(2).required().label('name'),
-    price: Joi.number().required().label('price'),
-    category: Joi.string().hex().length(24).required().label('category_id'),
-    restaurant: Joi.string().hex().length(24).required().label('restaurant_id'),
-    available: Joi.boolean().label('available'),
+    address: Joi.string().hex().length(24).required(),
+    restaurant: Joi.string().hex().length(24).required(),
+    items: Joi.array().items(items),
   });
   return schema.validate(body);
 };
+
+module.exports = { addOrderValidation };
