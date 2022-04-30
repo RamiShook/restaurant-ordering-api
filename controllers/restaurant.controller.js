@@ -1,6 +1,7 @@
 const restaurantService = require('../services/restaurant.service');
 const restaurantValidation = require('../validationSchemas/restaurantValidation.schema');
 const mongoose = require('mongoose');
+const { existUserAddressId } = require('../services/user.service');
 
 const addRestaurant = async (req, res) => {
   try {
@@ -95,6 +96,12 @@ const getNearBranches = async (req, res) => {
     return res.status(422).json({ error: true, message: 'wrong address id' });
 
   const { addressId } = req.body;
+  const userAddress = await existUserAddressId(req.user._id, addressId);
+  if (!userAddress)
+    return res.status(422).json({
+      error: true,
+      message: 'address not found or not belong to the user',
+    });
 
   const nearBranches = await restaurantService.getNearBranches(
     req.params.restId,

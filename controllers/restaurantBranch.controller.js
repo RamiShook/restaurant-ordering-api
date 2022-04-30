@@ -1,4 +1,5 @@
 const restaurantBranchService = require('../services/restaurantBranch.service');
+const { existUserAddressId } = require('../services/user.service');
 const {
   addRestaurantBranchValidation,
   updateRestaurantBranchValidation,
@@ -29,12 +30,25 @@ const addRestaurantBranch = async (req, res) => {
 
 const getNearRestaurantBranch = async (req, res) => {
   try {
+    if (!mongoose.Types.ObjectId.isValid(req.body.addressId))
+      return res.status(422).json({ error: true, message: 'wrong address id' });
+
+    const userId = req.user._id;
+
+    const userAddress = await existUserAddressId(userId, req.body.addressId);
+    if (!userAddress)
+      return res.status(422).json({
+        error: true,
+        message: 'address not found or not belong to the user',
+      });
+
     const { addressId } = req.body;
     const nearBranches = await restaurantBranchService.getNearRestaurantBranch(
       addressId,
     );
     return res.status(200).json({ message: 'Near branches:', nearBranches });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ error: true, message: 'internal server error ' });
   }
 };
