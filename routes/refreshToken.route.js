@@ -22,7 +22,7 @@ router.post('/', async (req, res) => {
       const accessToken = jwt.sign(
         payload,
         process.env.ACCESS_TOKEN_PRIVATE_KEY,
-        { expiresIn: '14m' },
+        { expiresIn: '25m' },
       );
       res.status(200).json({
         error: false,
