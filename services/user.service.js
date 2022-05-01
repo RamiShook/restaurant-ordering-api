@@ -158,6 +158,15 @@ const updateAddress = async (addressId, addressInfo) => {
   }
 };
 
+const getAddressInfo = async (addressId) => {
+  try {
+    const address = await Address.findById(addressId);
+    return address;
+  } catch (err) {
+    return Promise.reject(err);
+  }
+};
+
 module.exports = {
   findById,
   disableUser,
@@ -169,4 +178,5 @@ module.exports = {
   deleteAddress,
   existUserAddressId,
   updateAddress,
+  getAddressInfo,
 };
