@@ -6,7 +6,7 @@
   "scripts": {
     "start": "app.js",
     "start:dev": "nodemon app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --detectOpenHandles --watchAll"
   },
   "author": "Rami Shook",
   "license": "ISC",
@@ -26,6 +26,9 @@
     "eslint": "^8.14.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",
-    "nodemon": "^2.0.15"
+    "jest": "^28.0.3",
+    "mongodb-memory-server": "^8.5.2",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.3"
   }
 }

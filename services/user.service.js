@@ -86,6 +86,7 @@ const getUserInfo = async (userId) => {
     const user = await User.findById(userId, {
       email: 1,
       fullName: 1,
+      role: 1,
     }).populate('address', '-user -__v');
 
     return user;
