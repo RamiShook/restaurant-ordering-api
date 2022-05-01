@@ -121,4 +121,29 @@ const cancelOrder = async (req, res) => {
   }
 };
 
-module.exports = { addOrder, listOrders, cancelOrder };
+const getOrderInfo = async (req, res) => {
+  try {
+    const order = await orderService.getOrderInfo(req.user._id, req.params.id);
+    if (!order)
+      return res
+        .status(422)
+        .json({
+          error: true,
+          message: 'Order not found or not belong to this user',
+        });
+
+    let totalPrice = 0;
+    // eslint-disable-next-line array-callback-return
+    order.items.map((e) => {
+      totalPrice += e.item.price * e.quantity;
+    });
+
+    return res.status(200).json({ error: false, order, totalPrice });
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ error: true, message: 'internal server error' });
+  }
+};
+
+module.exports = { addOrder, listOrders, cancelOrder, getOrderInfo };
