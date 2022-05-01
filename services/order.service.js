@@ -89,4 +89,25 @@ const getOrderInfo = async (userId, orderId) => {
   }
 };
 
-module.exports = { addOrder, findById, listOrders, cancelOrder, getOrderInfo };
+const orderAction = async (orderId, actionStatus) => {
+  try {
+    const order = await Order.findOneAndUpdate(
+      {
+        _id: orderId,
+      },
+      { status: actionStatus },
+    );
+    return order;
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};
+
+module.exports = {
+  addOrder,
+  findById,
+  listOrders,
+  cancelOrder,
+  getOrderInfo,
+  orderAction,
+};

@@ -20,4 +20,11 @@ router.get(
   orderController.getOrderInfo,
 );
 
+router.put(
+  '/order/:orderId/action/:actionStatus',
+  authMiddlware.isLoggedIn,
+  authMiddlware.isAdmin,
+  orderController.orderAction,
+);
+
 module.exports = router;

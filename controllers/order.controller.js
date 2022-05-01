@@ -125,12 +125,10 @@ const getOrderInfo = async (req, res) => {
   try {
     const order = await orderService.getOrderInfo(req.user._id, req.params.id);
     if (!order)
-      return res
-        .status(422)
-        .json({
-          error: true,
-          message: 'Order not found or not belong to this user',
-        });
+      return res.status(422).json({
+        error: true,
+        message: 'Order not found or not belong to this user',
+      });
 
     let totalPrice = 0;
     // eslint-disable-next-line array-callback-return
@@ -146,4 +144,38 @@ const getOrderInfo = async (req, res) => {
   }
 };
 
-module.exports = { addOrder, listOrders, cancelOrder, getOrderInfo };
+const orderAction = async (req, res) => {
+  try {
+    const { orderId, actionStatus } = req.params;
+
+    const statusTypes = ['accepted', 'rejected'];
+    if (!statusTypes.includes(actionStatus))
+      return res.status(422).json({
+        error: true,
+        message: 'Status can be only accepted or rejected',
+      });
+
+    const order = await orderService.orderAction(orderId, actionStatus);
+    if (!order)
+      return res.status(422).json({
+        error: true,
+        message: 'Cannot find order',
+      });
+
+    return res
+      .status(200)
+      .json({ error: false, message: 'Order Status changed' });
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ error: true, message: 'internal server error' });
+  }
+};
+
+module.exports = {
+  addOrder,
+  listOrders,
+  cancelOrder,
+  getOrderInfo,
+  orderAction,
+};
