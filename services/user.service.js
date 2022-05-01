@@ -17,7 +17,6 @@ const userAction = async (id, disable) => {
 
     await User.findByIdAndUpdate(id, { $set: { disabled: disable } });
   } catch (err) {
-    console.log(err);
     return Promise.reject(err);
   }
 };
