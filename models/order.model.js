@@ -5,9 +5,14 @@ const { Schema } = mongoose;
 const orderSchema = new Schema(
   {
     branch: {
-      type: Schema.Types.ObjectId,
-      ref: 'RestaurantBranch',
-      required: true,
+      id: { type: Schema.Types.ObjectId, required: true },
+      name: { type: String, required: true },
+      address: {
+        coordinates: {
+          type: [Number],
+          index: '2dsphere',
+        },
+      },
     },
 
     items: [
@@ -17,14 +22,27 @@ const orderSchema = new Schema(
       },
     ],
 
-    user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+    user: {
+      id: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+      name: { type: String, required: true },
+    },
 
-    address: { type: Schema.Types.ObjectId, ref: 'Address', required: true },
+    address: {
+      coordinates: {
+        type: [Number],
+        index: '2dsphere',
+      },
+
+      completeAddress: {
+        street: { type: String },
+        city: { type: String },
+        building: { type: String },
+      },
+    },
 
     restaurant: {
-      type: Schema.Types.ObjectId,
-      ref: 'Restaurant',
-      required: true,
+      id: { type: Schema.Types.ObjectId, ref: 'Restaurant', required: true },
+      name: { type: String, required: true },
     },
 
     status: {

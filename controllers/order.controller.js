@@ -3,6 +3,8 @@ const { existUserAddressId } = require('../services/user.service');
 const { getNearBranches } = require('../services/restaurant.service');
 const { Types } = require('mongoose');
 const orderValidation = require('../validationSchemas/ordervalidation.schema');
+const userService = require('../services/user.service');
+const restaurantService = require('../services/restaurant.service');
 
 const addOrder = async (req, res) => {
   try {
@@ -12,40 +14,47 @@ const addOrder = async (req, res) => {
         .status(400)
         .json({ error: true, message: error.details[0].message });
 
-    const userId = req.user._id;
-    const { restaurant, items, address } = req.body;
-
     try {
-      const userAddress = await existUserAddressId(req.user._id, address);
-      if (!userAddress)
+      const user = await userService.findById(req.user._id);
+
+      const { restaurantId, items, addressId } = req.body;
+
+      const restaurant = await restaurantService.findById(restaurantId);
+
+      const existUserAddress = await existUserAddressId(
+        req.user._id,
+        addressId,
+      );
+
+      if (!existUserAddress)
         return res.status(422).json({
           error: true,
           message: 'address not found or not belong to the user',
         });
 
-      const nearRestaurantBranch = await getNearBranches(restaurant, address);
+      const userAddress = await userService.getAddressInfo(addressId);
+
+      const nearRestaurantBranch = await getNearBranches(restaurant, addressId);
       if (!nearRestaurantBranch)
         return res.status(422).json({
           error: true,
           message: 'No near branches for this restaurant ',
         });
-      const branchId = nearRestaurantBranch._id;
 
       const order = await orderService.addOrder(
-        branchId,
+        user,
         restaurant,
+        nearRestaurantBranch,
         items,
-        userId,
-        address,
+        userAddress,
       );
       return res
         .status(201)
-        .json({ error: false, message: 'Order created', orderId: order._id });
+        .json({ error: false, message: 'Order created', order });
     } catch (e) {
       return res.status(422).json({ error: true, message: e.message });
     }
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
     return res
       .status(500)
       .json({ error: true, message: 'internal server error' });
@@ -106,11 +115,67 @@ const cancelOrder = async (req, res) => {
 
     return res.status(200).json({ error: false, message: 'order canceled' });
   } catch (error) {
-    console.log(error);
     return res
       .status(500)
       .json({ error: true, message: 'internal server error' });
   }
 };
 
-module.exports = { addOrder, listOrders, cancelOrder };
+const getOrderInfo = async (req, res) => {
+  try {
+    const order = await orderService.getOrderInfo(req.user._id, req.params.id);
+    if (!order)
+      return res.status(422).json({
+        error: true,
+        message: 'Order not found or not belong to this user',
+      });
+
+    let totalPrice = 0;
+    // eslint-disable-next-line array-callback-return
+    order.items.map((e) => {
+      totalPrice += e.item.price * e.quantity;
+    });
+
+    return res.status(200).json({ error: false, order, totalPrice });
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ error: true, message: 'internal server error' });
+  }
+};
+
+const orderAction = async (req, res) => {
+  try {
+    const { orderId, actionStatus } = req.params;
+
+    const statusTypes = ['accepted', 'rejected'];
+    if (!statusTypes.includes(actionStatus))
+      return res.status(422).json({
+        error: true,
+        message: 'Status can be only accepted or rejected',
+      });
+
+    const order = await orderService.orderAction(orderId, actionStatus);
+    if (!order)
+      return res.status(422).json({
+        error: true,
+        message: 'Cannot find order',
+      });
+
+    return res
+      .status(200)
+      .json({ error: false, message: 'Order Status changed' });
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ error: true, message: 'internal server error' });
+  }
+};
+
+module.exports = {
+  addOrder,
+  listOrders,
+  cancelOrder,
+  getOrderInfo,
+  orderAction,
+};

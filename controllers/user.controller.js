@@ -2,17 +2,27 @@ const userService = require('../services/user.service');
 const userValidation = require('../validationSchemas/userValidationSchema');
 const { Types } = require('mongoose');
 
-const disableUser = async (req, res) => {
+const userAction = async (req, res) => {
   try {
     if (!Types.ObjectId.isValid(req.params.id))
       return res.status(422).json({ error: true, message: 'wrong user id' });
 
-    await userService.disableUser(req.params.id);
+    const { disable } = req.body;
+
+    if (typeof disable !== 'boolean')
+      return res
+        .status(422)
+        .json({ error: true, message: 'please set disable to true or false' });
+
+    await userService.userAction(req.params.id, disable);
   } catch (e) {
     return res.status(422).json({ error: true, message: e.message });
   }
 
-  return res.status(200).json({ error: false, message: 'User disabled' });
+  return res.status(200).json({
+    error: false,
+    message: `user ${req.body.disable ? 'disabled' : 'enabled'}`,
+  });
 };
 
 const updateUserInfo = async (req, res) => {
@@ -140,7 +150,7 @@ const updateAddress = async (req, res) => {
   }
 };
 module.exports = {
-  disableUser,
+  userAction,
   updateUserPassword,
   addAddress,
   updateUserInfo,

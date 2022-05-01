@@ -24,7 +24,6 @@ const signup = async (req, res) => {
       .status(201)
       .json({ error: false, message: 'Account created sucessfully' });
   } catch (err) {
-    console.log(err);
     res.status(500).json({ error: true, message: 'internal server error' });
   }
 };
@@ -52,7 +51,6 @@ const signin = async (req, res) => {
       message: 'Logged in sucessfully',
     });
   } catch (err) {
-    console.log(err);
     res.status(500).json({ error: true, message: 'Internal Server Error' });
   }
 };
