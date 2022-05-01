@@ -8,5 +8,16 @@ router.post('/order', authMiddlware.isLoggedIn, orderController.addOrder);
 
 router.get('/order', authMiddlware.isLoggedIn, orderController.listOrders);
 
-router.put('/order/:id', authMiddlware.isLoggedIn, orderController.cancelOrder);
+router.put(
+  '/order/:id/cancel',
+  authMiddlware.isLoggedIn,
+  orderController.cancelOrder,
+);
+
+router.get(
+  '/order/:id',
+  authMiddlware.isLoggedIn,
+  orderController.getOrderInfo,
+);
+
 module.exports = router;
