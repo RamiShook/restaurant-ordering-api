@@ -1,7 +1,7 @@
 const Order = require('../models/order.model');
 const Item = require('../models/items.model');
 
-const addOrder = async (branchId, restaurant, items, userId, address) => {
+const addOrder = async (user, restaurant, branch, items, userAddress) => {
   try {
     // check if item exist, available and belong to the same restaurant
     const itemsIds = items.map((e) => e.item);
@@ -9,20 +9,22 @@ const addOrder = async (branchId, restaurant, items, userId, address) => {
     const existItems = await Item.find({
       _id: { $in: itemsIds },
       available: true,
-      restaurant,
+      restaurant: restaurant._id,
     });
 
     if (existItems.length !== itemsIds.length)
       return Promise.reject(Error('Some item may not available, or not exist'));
 
     const order = await Order.create({
-      branch: branchId,
+      user: { id: user._id, name: user.fullName },
+      restaurant: { id: restaurant.id, name: restaurant.name },
+      branch: { id: branch._id, name: branch.name, address: branch.address },
       items,
-      user: userId,
-      address,
-      restaurant,
+      address: {
+        coordinates: userAddress.address.coordinates,
+        completeAddress: userAddress.completeAddress,
+      },
     });
-
     return order;
   } catch (error) {
     return Promise.reject(error);

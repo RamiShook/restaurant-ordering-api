@@ -7,8 +7,8 @@ const addOrderValidation = (body) => {
   });
 
   const schema = Joi.object({
-    address: Joi.string().hex().length(24).required(),
-    restaurant: Joi.string().hex().length(24).required(),
+    addressId: Joi.string().hex().length(24).required(),
+    restaurantId: Joi.string().hex().length(24).required(),
     items: Joi.array().items(items),
   });
   return schema.validate(body);
