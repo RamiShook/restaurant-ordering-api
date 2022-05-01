@@ -33,30 +33,16 @@ const addOrder = async (user, restaurant, branch, items, userAddress) => {
 
 const listOrders = async (userId, status, currentPage, perPage) => {
   try {
-    const orders = await Order.find({ user: userId, status })
-      .populate([
-        {
-          path: 'items.item',
-          select: ['name', 'price'],
-          populate: {
-            path: 'category',
-            model: 'Category',
-            select: 'name',
-          },
-        },
-        {
-          path: 'branch',
+    const orders = await Order.find({ 'user.id': userId, status })
+      .populate({
+        path: 'items.item',
+        select: ['name', 'price'],
+        populate: {
+          path: 'category',
+          model: 'Category',
           select: 'name',
         },
-        {
-          path: 'address',
-          select: 'label',
-        },
-        {
-          path: 'restaurant',
-          select: 'name',
-        },
-      ])
+      })
       .skip((currentPage - 1) * perPage)
       .limit(perPage);
 
@@ -80,7 +66,7 @@ const cancelOrder = async (userId, orderId) => {
     const canceledOrder = await Order.findOneAndUpdate(
       {
         _id: orderId,
-        user: userId,
+        'user.id': userId,
       },
       { status: 'canceled' },
     );
@@ -90,4 +76,17 @@ const cancelOrder = async (userId, orderId) => {
   }
 };
 
-module.exports = { addOrder, findById, listOrders, cancelOrder };
+const getOrderInfo = async (userId, orderId) => {
+  try {
+    const detailedOrder = await Order.findOne({
+      _id: orderId,
+      'user.id': userId,
+    }).populate('items.item');
+
+    return detailedOrder;
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};
+
+module.exports = { addOrder, findById, listOrders, cancelOrder, getOrderInfo };
