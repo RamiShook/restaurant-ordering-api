@@ -16,7 +16,6 @@ const userAction = async (req, res) => {
 
     await userService.userAction(req.params.id, disable);
   } catch (e) {
-    console.log(e);
     return res.status(422).json({ error: true, message: e.message });
   }
 
