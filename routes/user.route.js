@@ -16,11 +16,11 @@ router.post(
   userController.updateUserPassword,
 );
 
-router.post(
-  '/user/disable/:id',
+router.put(
+  '/user/:id',
   authMiddlware.isLoggedIn,
   authMiddlware.isAdmin,
-  userController.disableUser,
+  userController.userAction,
 );
 
 router.post(

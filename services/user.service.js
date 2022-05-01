@@ -7,19 +7,17 @@ const findById = async (id) => {
   return user;
 };
 
-const disableUser = async (id) => {
+const userAction = async (id, disable) => {
   try {
-    const user = await User.findById(id);
-    if (!user) return Error('user not found');
-
-    if (user.disabled === true)
-      return Promise.reject(Error('User Already disabled'));
+    const user = await findById(id);
+    if (!user) return Promise.reject(Error('user not found'));
 
     if (user.role === 'admin')
       return Promise.reject(Error('Cannot diasble Admin account'));
 
-    await User.findByIdAndUpdate(id, { $set: { disabled: true } });
+    await User.findByIdAndUpdate(id, { $set: { disabled: disable } });
   } catch (err) {
+    console.log(err);
     return Promise.reject(err);
   }
 };
@@ -169,7 +167,7 @@ const getAddressInfo = async (addressId) => {
 
 module.exports = {
   findById,
-  disableUser,
+  userAction,
   updateUserInfo,
   updateUserPassword,
   addAddress,
