@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const { createServer } = require('./utils/server');
+const { createServer } = require('./server');
 
 const app = createServer();
 

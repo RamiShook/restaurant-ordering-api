@@ -2,13 +2,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-const authRoutes = require('../routes/auth.route');
-const refreshTokenRoutes = require('../routes/refreshToken.route');
-const userRoutes = require('../routes/user.route');
-const menuRoutes = require('../routes/menu.route');
-const restaurantBranchRoutes = require('../routes/restaurantBranch.route');
-const restaurantRoutes = require('../routes/restaurant.route');
-const orderRoutes = require('../routes/order.route');
+const authRoutes = require('./routes/auth.route');
+const refreshTokenRoutes = require('./routes/refreshToken.route');
+const userRoutes = require('./routes/user.route');
+const menuRoutes = require('./routes/menu.route');
+const restaurantBranchRoutes = require('./routes/restaurantBranch.route');
+const restaurantRoutes = require('./routes/restaurant.route');
+const orderRoutes = require('./routes/order.route');
 require('dotenv').config();
 
 function createServer() {
