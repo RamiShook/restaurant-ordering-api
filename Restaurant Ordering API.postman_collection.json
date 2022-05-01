@@ -1,0 +1,4081 @@
+{
+	"info": {
+		"_postman_id": "98ebc692-4945-4736-885b-3b69fdebfc4e",
+		"name": "Restaurant Ordering API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"ramishook992@gmail.com\",\n    \"password\":\"Rami@1234\",\n    \"repeat_password\":\"Rami@1234\",\n    \"fullName\":\"Rami Shook\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/signup",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"signup"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "signup",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"ramishook99@gmail.com\",\n    \"password\":\"Rami@1234\",\n    \"repeat_password\":\"Rami@1234\",\n    \"fullName\":\"Rami Shook\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/signup",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"signup"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "55"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"37-ThCxhmXjSJGO4LEuXjuAf3J1BZc\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Apr 2022 02:48:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": false,\n    \"message\": \"Account created sucessfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"accessToken\", data.accessToken);",
+									"postman.setEnvironmentVariable(\"refreshToken\", data.refreshToken);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"ramishook99@gmail.com\",\n    \"password\": \"Rami@1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"ramishook99@gmail.com\",\n    \"password\": \"Rami@1234\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/login",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "468"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1d4-VUQusSqbObUVFUz/irhJDTpUGU8\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Apr 2022 02:45:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": false,\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZjYTBhYjQwODM0M2IzYTMyYjI4MDAiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NTEyODY3NTMsImV4cCI6MTY1MTI4NzU5M30.gWb8uEzkLfoHrlZNFZHnQK-a8vl7T03MXf-1hcMV8qw\",\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZjYTBhYjQwODM0M2IzYTMyYjI4MDAiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NTEyODY3NTMsImV4cCI6MTY1Mzg3ODc1M30.3mjILXSbD-5mA7VyAG4v9Glkf91Pyz-LYVhwCHS3KmQ\",\n    \"message\": \"Logged in sucessfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "refresh token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"accessToken\", data.accessToken);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refreshToken\": \"{{refreshToken}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/refreshToken",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"refreshToken"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "refresh token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"refreshToken\": \"{{refreshToken}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/refreshToken",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"refreshToken"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "270"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"10e-5fxdUjAtmOCWz9J+7glUNvezxpg\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Apr 2022 02:45:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": false,\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZjYTBhYjQwODM0M2IzYTMyYjI4MDAiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NTEyODY3NTUsImV4cCI6MTY1MTI4NzU5NX0.X9yFBXo_QKmWPwZRdrdCUFpym-U8PLgej1h7TxXFsww\",\n    \"message\": \"Access token created successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refreshToken\": \"{{refreshToken}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/refreshToken",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"refreshToken"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "logout",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"refreshToken\": \"{{refreshToken}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/refreshToken",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"refreshToken"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "50"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"32-d5MrjweS9/vCF0KHypLNsA+DhTA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Apr 2022 02:49:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": false,\n    \"message\": \"Logged Out Sucessfully\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "menu",
+			"item": [
+				{
+					"name": "Category",
+					"item": [
+						{
+							"name": "add category",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Plate\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/category",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"category"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "add category",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{accessToken}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"Dessert\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:3000/api/category",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"category"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "104"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"68-odqK9gja18T4OokXBB+sh3vhG78\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 30 Apr 2022 02:48:12 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Category added\",\n    \"addedCategory\": {\n        \"name\": \"Dessert\",\n        \"_id\": \"626ca36c408343b3a32b2825\",\n        \"__v\": 0\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "update category",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"Desserts\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/category/626ca36c408343b3a32b2825",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"category",
+										"626ca36c408343b3a32b2825"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "update category",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{accessToken}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\":\"Desserts\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:3000/api/category/626ca36c408343b3a32b2825",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"category",
+												"626ca36c408343b3a32b2825"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "132"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"84-SPgceSjD65kr5sq5Lviwnoz6zRA\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 30 Apr 2022 02:50:31 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": false,\n    \"message\": \"Category updated {\\n  _id: new ObjectId(\\\"626ca36c408343b3a32b2825\\\"),\\n  name: 'Desserts',\\n  __v: 0\\n}\"\n}"
+								}
+							]
+						},
+						{
+							"name": "delete category",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:3000/api/category/626ca418408343b3a32b2831",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"category",
+										"626ca418408343b3a32b2831"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "delete category",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{accessToken}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "localhost:3000/api/category/626ca418408343b3a32b2831",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"category",
+												"626ca418408343b3a32b2831"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "45"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"2d-l/UQwXkPjN5NsYnflET72IMkXTM\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 30 Apr 2022 02:51:12 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": false,\n    \"message\": \"Category Deleted!\"\n}"
+								}
+							]
+						},
+						{
+							"name": "set image",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/home/rami/Pictures/Screenshot from 2022-04-23 05-27-35.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3000/api/category/626ca36c408343b3a32b2825/image",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"category",
+										"626ca36c408343b3a32b2825",
+										"image"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "set image",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{accessToken}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "image",
+													"type": "file",
+													"src": "/home/rami/Pictures/Screenshot from 2022-04-23 05-27-35.png"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:3000/api/category/626ca36c408343b3a32b2825/image",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"category",
+												"626ca36c408343b3a32b2825",
+												"image"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "176"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"b0-/f+4q5Nts2D7pZ1Q9Q3BTojOsdk\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 30 Apr 2022 02:51:33 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": false,\n    \"message\": \"Category Updated\",\n    \"updatedImage\": {\n        \"_id\": \"626ca36c408343b3a32b2825\",\n        \"name\": \"Desserts\",\n        \"__v\": 0,\n        \"image\": \"public/uploads/images/image-1651287093648.png\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "list categories",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:3000/api/category?page=1&perpage=5",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"category"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "perpage",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "list categories",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{accessToken}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "localhost:3000/api/category?page=1&perpage=5",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"category"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perpage",
+													"value": "5"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "314"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"13a-58BKzOQJPK1MB/baBUSF3FDyni4\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 30 Apr 2022 03:02:55 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"_id\": \"626ca2e9408343b3a32b281c\",\n        \"name\": \"Sandwich\"\n    },\n    {\n        \"_id\": \"626ca2f3408343b3a32b281f\",\n        \"name\": \"Drink\"\n    },\n    {\n        \"_id\": \"626ca32b408343b3a32b2822\",\n        \"name\": \"Burger\"\n    },\n    {\n        \"_id\": \"626ca36c408343b3a32b2825\",\n        \"name\": \"Desserts\",\n        \"image\": \"public/uploads/images/image-1651287093648.png\"\n    },\n    {\n        \"_id\": \"626ca6b1c7b592f15d33c1f3\",\n        \"name\": \"Plate\"\n    }\n]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Item",
+					"item": [
+						{
+							"name": "add item",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Milkshake Oreo\",\n    \"price\": 2,\n    \"category\": \"626ca2f3408343b3a32b281f\",\n    \"restaurant\": \"626ca7f02d67e6490efa679b\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/item",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"item"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "add item",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{accessToken}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"Milkshake Oreo\",\n    \"price\": 2,\n    \"category\": \"626ca2f3408343b3a32b281f\",\n    \"restaurant\": \"626ca7f02d67e6490efa679b\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:3000/api/item",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"item"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "218"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"da-VUaPGHcusmanl106DGTFseJriyI\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 30 Apr 2022 04:16:23 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": false,\n    \"message\": \"Item Added!\",\n    \"item\": {\n        \"name\": \"Milkshake Oreo\",\n        \"price\": 2,\n        \"category\": \"626ca2f3408343b3a32b281f\",\n        \"available\": true,\n        \"restaurant\": \"626ca7f02d67e6490efa679b\",\n        \"_id\": \"626cb816b9f062e84a563456\",\n        \"__v\": 0\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "update item",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"available\": \"false\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/item/6269ffe8f36d6ea3acfa7d03",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"item",
+										"6269ffe8f36d6ea3acfa7d03"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "update item",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{accessToken}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"available\": \"false\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:3000/api/item/626caaf1adfc6c79c253b923",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"item",
+												"626caaf1adfc6c79c253b923"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "237"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"ed-AvpdOpXEzBy49ENI7/RPvy+yZQs\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 30 Apr 2022 03:20:24 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": false,\n    \"message\": \"Item Updated\",\n    \"updatedItem\": {\n        \"_id\": \"626caaf1adfc6c79c253b923\",\n        \"name\": \"Sauce chicken sandwish\",\n        \"price\": 2.5,\n        \"category\": \"626ca2e9408343b3a32b281c\",\n        \"available\": false,\n        \"restaurant\": \"626ca7812d67e6490efa6799\",\n        \"__v\": 0\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "delete item",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:3000/api/item/626899d3167c12a2134383a2",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"item",
+										"626899d3167c12a2134383a2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "set image",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/home/rami/Downloads/milshakeoreo.jpeg"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3000/api/item/626cb816b9f062e84a563456/image",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"item",
+										"626cb816b9f062e84a563456",
+										"image"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "set image",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{accessToken}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "image",
+													"type": "file",
+													"src": "/home/rami/Downloads/milshakeoreo.jpeg"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:3000/api/item/626cb816b9f062e84a563456/image",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"item",
+												"626cb816b9f062e84a563456",
+												"image"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "284"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"11c-OzVXWfj/SodXSGMo2WEQOF6xcs4\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 30 Apr 2022 04:27:31 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": false,\n    \"message\": \"Item Updated\",\n    \"updatedImage\": {\n        \"_id\": \"626cb816b9f062e84a563456\",\n        \"name\": \"Milkshake Oreo\",\n        \"price\": 2,\n        \"category\": \"626ca2f3408343b3a32b281f\",\n        \"available\": true,\n        \"restaurant\": \"626ca7f02d67e6490efa679b\",\n        \"__v\": 0,\n        \"image\": \"public/uploads/images/image-1651292851459.jpeg\"\n    }\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "list available items",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api//available-item?page=1&perpage=5",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"",
+								"available-item"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "perpage",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "filter by category",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/available-item/626ca2e9408343b3a32b281c?page=1&perpage=1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"available-item",
+								"626ca2e9408343b3a32b281c"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "perpage",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "filter by category",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:3000/api/available-item/626ca2e9408343b3a32b281c?page=1&perpage=1",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"available-item",
+										"626ca2e9408343b3a32b281c"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "perpage",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "206"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ce-+QNl+9vCF5O6QQ/spIg7g71okGc\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Apr 2022 03:22:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"_id\": \"626caa6aadfc6c79c253b91b\",\n        \"name\": \"Something similar to tawwok\",\n        \"price\": 2.5,\n        \"category\": {\n            \"_id\": \"626ca2e9408343b3a32b281c\",\n            \"name\": \"Sandwich\"\n        },\n        \"available\": true,\n        \"restaurant\": \"626ca7812d67e6490efa6799\"\n    }\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Restaurant",
+			"item": [
+				{
+					"name": "add restaurant",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"SANDWISH W NOS\",\n    \"about\":\"Every single item in our menu is piece of s***\",\n    \"owner\":\"Thank God it's not me\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/restaurant",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"restaurant"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "add restaurant",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"SANDWISH W NOS\",\n    \"about\":\"Every single item in our menu is piece of s***\",\n    \"owner\":\"Thank God it's not me\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/restaurant",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"restaurant"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "239"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ef-d6p8/m69Zoe/yuQbckYkJUUOP+k\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Apr 2022 03:09:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": false,\n    \"message\": \"Restaurant Added!\",\n    \"Restaurant\": {\n        \"name\": \"SANDWISH W NOS\",\n        \"about\": \"Every single item in our menu is piece of s***\",\n        \"owner\": \"Thank God it's not me\",\n        \"items\": [],\n        \"branches\": [],\n        \"_id\": \"626ca8512d67e6490efa679f\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "list available items",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/restaurant/626ca7f02d67e6490efa679b/available-items?page=1&perpage=3",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"restaurant",
+								"626ca7f02d67e6490efa679b",
+								"available-items"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "perpage",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "list available items",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:3000/api/restaurant/626ca7812d67e6490efa6799/available-items?page=1&perpage=2",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"restaurant",
+										"626ca7812d67e6490efa6799",
+										"available-items"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "perpage",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "434"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1b2-LAs2+To4sALEfO8h4NrfSUXTNmo\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Apr 2022 03:29:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": false,\n    \"items\": [\n        {\n            \"_id\": \"626caa04adfc6c79c253b914\",\n            \"name\": \"Not a Sandwish\",\n            \"price\": 2.5,\n            \"category\": {\n                \"_id\": \"626ca9d9adfc6c79c253b90f\",\n                \"name\": \"s**t\"\n            },\n            \"available\": true,\n            \"restaurant\": \"626ca7812d67e6490efa6799\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"626caa6aadfc6c79c253b91b\",\n            \"name\": \"Something similar to tawwok\",\n            \"price\": 2.5,\n            \"category\": {\n                \"_id\": \"626ca2e9408343b3a32b281c\",\n                \"name\": \"Sandwich\"\n            },\n            \"available\": true,\n            \"restaurant\": \"626ca7812d67e6490efa6799\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "list restaurant",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/restaurant?page=1&perpage=3&limit_items=10",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"restaurant"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "perpage",
+									"value": "3"
+								},
+								{
+									"key": "limit_items",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "list restaurant",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:3000/api/restaurant?page=1&perpage=3&limit_items=10",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"restaurant"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "perpage",
+											"value": "3"
+										},
+										{
+											"key": "limit_items",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1804"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"70c-+Lba+LFCP7+L1P6M79hrI3gJ+U0\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Apr 2022 05:45:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": false,\n    \"restaurantList\": [\n        {\n            \"_id\": \"626ca7812d67e6490efa6799\",\n            \"name\": \"SANDWISH W NOS\",\n            \"about\": \"Every single item in our menu is piece of s***\",\n            \"owner\": \"Thank God it's not me\",\n            \"items\": [\n                {\n                    \"_id\": \"626caa04adfc6c79c253b914\",\n                    \"name\": \"Not a Sandwish\",\n                    \"category\": {\n                        \"_id\": \"626ca9d9adfc6c79c253b90f\",\n                        \"name\": \"s**t\"\n                    },\n                    \"available\": true\n                },\n                {\n                    \"_id\": \"626caa6aadfc6c79c253b91b\",\n                    \"name\": \"Something similar to tawwok\",\n                    \"category\": {\n                        \"_id\": \"626ca2e9408343b3a32b281c\",\n                        \"name\": \"Sandwich\"\n                    },\n                    \"available\": true\n                },\n                {\n                    \"_id\": \"626caaf1adfc6c79c253b923\",\n                    \"name\": \"Sauce chicken sandwish\",\n                    \"category\": {\n                        \"_id\": \"626ca2e9408343b3a32b281c\",\n                        \"name\": \"Sandwich\"\n                    },\n                    \"available\": false\n                }\n            ],\n            \"branches\": [\n                \"626cae0aadfc6c79c253b93b\"\n            ],\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"626ca7f02d67e6490efa679b\",\n            \"name\": \"McDonald\",\n            \"about\": \"Who need to read about when it comes to McDonald!\",\n            \"owner\": \"Hope it was me\",\n            \"items\": [\n                {\n                    \"_id\": \"626cb702b9f062e84a56343e\",\n                    \"name\": \"Hamburger\",\n                    \"category\": {\n                        \"_id\": \"626ca32b408343b3a32b2822\",\n                        \"name\": \"Burger\"\n                    },\n                    \"available\": true\n                },\n                {\n                    \"_id\": \"626cb71fb9f062e84a563444\",\n                    \"name\": \"Cheese burger\",\n                    \"category\": {\n                        \"_id\": \"626ca32b408343b3a32b2822\",\n                        \"name\": \"Burger\"\n                    },\n                    \"available\": true\n                },\n                {\n                    \"_id\": \"626cb736b9f062e84a56344a\",\n                    \"name\": \"Big Mac\",\n                    \"category\": {\n                        \"_id\": \"626ca32b408343b3a32b2822\",\n                        \"name\": \"Burger\"\n                    },\n                    \"available\": true\n                },\n                {\n                    \"_id\": \"626cb7b9b9f062e84a563450\",\n                    \"name\": \"Mudpie McFlurry\",\n                    \"category\": {\n                        \"_id\": \"626ca36c408343b3a32b2825\",\n                        \"name\": \"Desserts\"\n                    },\n                    \"available\": true\n                },\n                {\n                    \"_id\": \"626cb816b9f062e84a563456\",\n                    \"name\": \"Milkshake Oreo\",\n                    \"category\": {\n                        \"_id\": \"626ca2f3408343b3a32b281f\",\n                        \"name\": \"Drink\"\n                    },\n                    \"available\": true\n                }\n            ],\n            \"branches\": [\n                \"626cbb1aa2be2c44aa0eb1b9\",\n                \"626cbb24a2be2c44aa0eb1bd\",\n                \"626cbb3ca2be2c44aa0eb1c4\",\n                \"626cbb63a2be2c44aa0eb1cb\"\n            ],\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"626ca8392d67e6490efa679d\",\n            \"name\": \"KFC\",\n            \"about\": \"Read about it on google, who lives under a rock\",\n            \"owner\": \"Nope, Not Rami Shook\",\n            \"items\": [],\n            \"branches\": [],\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "list available items by category",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/restaurant/626ca7812d67e6490efa6799/category/626ca9d9adfc6c79c253b90f?page=1&perpage=2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"restaurant",
+								"626ca7812d67e6490efa6799",
+								"category",
+								"626ca9d9adfc6c79c253b90f"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "perpage",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "list available items by category",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:3000/api/restaurant/626ca7812d67e6490efa6799/category/626ca9d9adfc6c79c253b90f?page=1&perpage=2",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"restaurant",
+										"626ca7812d67e6490efa6799",
+										"category",
+										"626ca9d9adfc6c79c253b90f"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "perpage",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "173"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ad-oKtHz9e8NdNX6IMJL9YemSULOA4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Apr 2022 03:32:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": false,\n    \"items\": [\n        {\n            \"_id\": \"626caa04adfc6c79c253b914\",\n            \"name\": \"Not a Sandwish\",\n            \"price\": 2.5,\n            \"category\": {\n                \"_id\": \"626ca9d9adfc6c79c253b90f\",\n                \"name\": \"s**t\"\n            },\n            \"available\": true\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "list near restaurant branch",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"addressId\":\"626cbd2da2be2c44aa0eb1e3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/restaurant/626ca7f02d67e6490efa679b/nearBranches",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"restaurant",
+								"626ca7f02d67e6490efa679b",
+								"nearBranches"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "list near restaurant",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"addressId\":\"626a1b63810010108e0b45e3\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/restaurant-branch/near",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"restaurant-branch",
+										"near"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "290"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"122-GixfTj+E5BT9WiBY+DOK0aVhG38\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 28 Apr 2022 04:48:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Near branches:\",\n    \"nearBranches\": [\n        {\n            \"address\": {\n                \"type\": \"point\",\n                \"coordinates\": [\n                    33.893791,\n                    35.501777\n                ]\n            },\n            \"_id\": \"626a0d3e499e6807b6ed5f7e\",\n            \"name\": \"Branch 1\",\n            \"restaurant\": {\n                \"_id\": \"6269b4d1be0e44ce3c55f82b\",\n                \"name\": \"SANDWISH W NOS\",\n                \"about\": \"Every single item in our menu is piece of s***\"\n            }\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Restaurant Branch",
+			"item": [
+				{
+					"name": "add branch",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Branch 2\",\n    \"restaurant\":\"626ca7812d67e6490efa6799\",\n    \"address\":{\n       \"coordinates\": [33.893791,35.501777]}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/restaurant-branch",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"restaurant-branch"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "add branch",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Branch 1\",\n    \"restaurant\":\"626ca7812d67e6490efa6799\",\n    \"address\":{\n       \"coordinates\": [33.893791,35.501777]}\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/restaurant-branch",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"restaurant-branch"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "199"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c7-xjsVPy9TCCKqXJm098ZxMn/zFrk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Apr 2022 03:33:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Branch added\",\n    \"result\": {\n        \"name\": \"Branch 1\",\n        \"restaurant\": \"626ca7812d67e6490efa6799\",\n        \"address\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                33.893791,\n                35.501777\n            ]\n        },\n        \"_id\": \"626cae0aadfc6c79c253b93b\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "list near branches",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"addressId\": \"626cafbdadfc6c79c253b950\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/restaurant-branch/near",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"restaurant-branch",
+								"near"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "list near branches",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"addressId\": \"626cafbdadfc6c79c253b950\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/restaurant-branch/near",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"restaurant-branch",
+										"near"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "289"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"121-aRemg8p/r9V0gjJmXjzJVLpJsCY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Apr 2022 03:54:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Near branches:\",\n    \"nearBranches\": [\n        {\n            \"address\": {\n                \"type\": \"Point\",\n                \"coordinates\": [\n                    33.893791,\n                    35.501777\n                ]\n            },\n            \"_id\": \"626cae0aadfc6c79c253b93b\",\n            \"name\": \"branch1\",\n            \"restaurant\": {\n                \"_id\": \"626ca7812d67e6490efa6799\",\n                \"name\": \"SANDWISH W NOS\",\n                \"about\": \"Every single item in our menu is piece of s***\"\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "delete restaurant branch",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/restaurant-branch/626cae1eadfc6c79c253b93f",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"restaurant-branch",
+								"626cae1eadfc6c79c253b93f"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "delete restaurant branch",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:3000/api/restaurant-branch/626cae1eadfc6c79c253b93f",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"restaurant-branch",
+										"626cae1eadfc6c79c253b93f"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "52"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"34-nALnpGDM4g9wxTas8ee2gt4Ao1s\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Apr 2022 03:34:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": false,\n    \"message\": \"Resturant Branch Deleted\"\n}"
+						}
+					]
+				},
+				{
+					"name": "update restaurant branch",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"branch1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/restaurant-branch/626cae0aadfc6c79c253b93b",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"restaurant-branch",
+								"626cae0aadfc6c79c253b93b"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update restaurant branch",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"branch1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/restaurant-branch/626cae0aadfc6c79c253b93b",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"restaurant-branch",
+										"626cae0aadfc6c79c253b93b"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "231"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e7-HJdiLHgSX0a/h8qcysul7bZBhxU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Apr 2022 03:34:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": false,\n    \"message\": \"Resturant Branch Updated\",\n    \"updatedBranch\": {\n        \"address\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                33.893791,\n                35.501777\n            ]\n        },\n        \"_id\": \"626cae0aadfc6c79c253b93b\",\n        \"name\": \"branch1\",\n        \"restaurant\": \"626ca7812d67e6490efa6799\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "address",
+					"item": [
+						{
+							"name": "add address",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"address\": {\n        \"coordinates\": [\n            33.893791,\n            35.501777\n        ]\n    },\n    \"completeAddress\": {\n        \"street\": \"Girls public school\",\n        \"city\": \"Kalamoun\",\n        \"building\":\"Shook house\"\n    },\n    \"label\": \"Home\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/user/address",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"user",
+										"address"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "add address",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{accessToken}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"address\": {\n        \"coordinates\": [\n            33.893791,\n            35.501777\n        ]\n    },\n    \"completeAddress\": {\n        \"street\": \"Mars \",\n        \"city\": \"aghh\",\n        \"building\":\"undergreound\"\n    },\n    \"label\": \"My another home\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:3000/api/user/address",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"user",
+												"address"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "272"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"110-MV8DmvJkwyN4/8Kyh9mGrzQf91o\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 30 Apr 2022 03:38:24 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": false,\n    \"userAddress\": {\n        \"address\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                33.893791,\n                35.501777\n            ]\n        },\n        \"label\": \"My another home\",\n        \"completeAddress\": {\n            \"street\": \"Mars \",\n            \"city\": \"aghh\",\n            \"building\": \"undergreound\"\n        },\n        \"user\": \"626ca0ab408343b3a32b2800\",\n        \"_id\": \"626caf30adfc6c79c253b94d\",\n        \"__v\": 0\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "list addresses",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:3000/api/user/address",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"user",
+										"address"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "list addresses",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{accessToken}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "localhost:3000/api/user/address",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"user",
+												"address"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "471"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1d7-ugfoywce7845L1N/hXJnKc9RdmI\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 30 Apr 2022 03:48:02 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": false,\n    \"addresses\": {\n        \"_id\": \"626ca0ab408343b3a32b2800\",\n        \"address\": [\n            {\n                \"address\": {\n                    \"type\": \"Point\",\n                    \"coordinates\": [\n                        33.893791,\n                        45.501777\n                    ]\n                },\n                \"completeAddress\": {\n                    \"street\": \"Mars \",\n                    \"city\": \"aghh\",\n                    \"building\": \"undergreound\"\n                },\n                \"_id\": \"626caf30adfc6c79c253b94d\",\n                \"label\": \"Work\"\n            },\n            {\n                \"address\": {\n                    \"type\": \"Point\",\n                    \"coordinates\": [\n                        33.893791,\n                        35.501777\n                    ]\n                },\n                \"completeAddress\": {\n                    \"street\": \"Girls public school\",\n                    \"city\": \"Kalamoun\",\n                    \"building\": \"Shook house\"\n                },\n                \"_id\": \"626cafbdadfc6c79c253b950\",\n                \"label\": \"Home\"\n            }\n        ]\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "update address",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"label\":\"Work\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/user/address/626caf30adfc6c79c253b94d",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"user",
+										"address",
+										"626caf30adfc6c79c253b94d"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "update address",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{accessToken}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"label\":\"Work\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:3000/api/user/address/626caf30adfc6c79c253b94d",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"user",
+												"address",
+												"626caf30adfc6c79c253b94d"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "264"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"108-0j4GiRtBEQbzzEqUxfJjhb7Jc5I\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 30 Apr 2022 03:50:18 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": false,\n    \"updatedAddress\": {\n        \"address\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                33.893791,\n                45.501777\n            ]\n        },\n        \"completeAddress\": {\n            \"street\": \"Mars \",\n            \"city\": \"aghh\",\n            \"building\": \"undergreound\"\n        },\n        \"_id\": \"626caf30adfc6c79c253b94d\",\n        \"label\": \"Work\",\n        \"user\": \"626ca0ab408343b3a32b2800\",\n        \"__v\": 0\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "delete address",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:3000/api/user/address/626cb2a28e36e3a82a760e26",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"user",
+										"address",
+										"626cb2a28e36e3a82a760e26"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "disable user",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"disable\":false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/user/626ca0c0408343b3a32b2804",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"626ca0c0408343b3a32b2804"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "disable user",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"disable\":true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/user/626ca0c0408343b3a32b2804",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"user",
+										"626ca0c0408343b3a32b2804"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"29-s9hgvu2JIHikZhihUVp4RQ/rOGQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 01 May 2022 07:43:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": false,\n    \"message\": \"user disabled\"\n}"
+						},
+						{
+							"name": "enable user",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"disable\":false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/user/626ca0c0408343b3a32b2804",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"user",
+										"626ca0c0408343b3a32b2804"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "40"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"28-3HO05t3jm/s3pBro9PyVw0ymGZA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 01 May 2022 07:44:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": false,\n    \"message\": \"user enabled\"\n}"
+						}
+					]
+				},
+				{
+					"name": "get user info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/user",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get user info",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:3000/api/user",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"user"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "330"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"14a-FL4Xrtw7rEK2vDbfBxtUpmxdymo\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Apr 2022 04:53:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": false,\n    \"user\": {\n        \"_id\": \"626ca398408343b3a32b2829\",\n        \"email\": \"ramishook992@gmail.com\",\n        \"fullName\": \"Rami Shook\",\n        \"address\": [\n            {\n                \"address\": {\n                    \"type\": \"Point\",\n                    \"coordinates\": [\n                        20.8938,\n                        30.50188\n                    ]\n                },\n                \"completeAddress\": {\n                    \"street\": \"Girls public school\",\n                    \"city\": \"Kalamoun\",\n                    \"building\": \"Shook house\"\n                },\n                \"_id\": \"626cbd2da2be2c44aa0eb1e3\",\n                \"label\": \"Home\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "update user info",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fullName\": \"Rami Shook App Admin\",\n    \"password\": \"Rami@1234\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/user/info",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"info"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update user info",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"fullName\": \"Rami Shook App Admin\",\n    \"password\": \"Rami@1234\"\n\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/user/info",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"user",
+										"info"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "45"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2d-o+bLTZeBIZuhqsKjPXPjLMwc/jw\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Apr 2022 03:36:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": false,\n    \"message\": \"User info updated\"\n}"
+						}
+					]
+				},
+				{
+					"name": "update user password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"oldPassword\":\"Rami@12345\",\n    \"newPassword\":\"Rami@1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/user/password",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"password"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update user password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"oldPassword\":\"Rami@12345\",\n    \"newPassword\":\"Rami@1234\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/user/password",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"user",
+										"password"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "50"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"32-OgeIcDDuQlykPQ1yk2/YkbHUyvY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Apr 2022 03:37:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": false,\n    \"message\": \"User passsword updated\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Ordering",
+			"item": [
+				{
+					"name": "add order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"items\": [\n        {\n            \"item\": \"626cb736b9f062e84a56344a\",\n            \"quantity\": 5\n        },\n        {\n            \"item\": \"626cb71fb9f062e84a563444\",\n            \"quantity\": 2\n        }\n    ],\n    \"addressId\": \"626cafbdadfc6c79c253b950\",\n    \"restaurantId\": \"626ca7f02d67e6490efa679b\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/order",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"order"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "add order",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"items\": [\n        {\n            \"item\": \"626cb702b9f062e84a56343e\",\n            \"quantity\": 1\n        },\n        {\n            \"item\": \"626cb71fb9f062e84a563444\",\n            \"quantity\": 1\n        },\n        {\n            \"item\": \"626cb736b9f062e84a56344a\",\n            \"quantity\": 1\n        }\n    ],\n    \"address\": \"626cbd2da2be2c44aa0eb1e3\",\n    \"restaurant\": \"626ca7f02d67e6490efa679b\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/order",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"order"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "78"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4e-86h6KVmkA5REmcaIsbq6cSJctGw\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Apr 2022 05:45:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": false,\n    \"message\": \"Order created\",\n    \"orderId\": \"626ccce4c2e5c2325fd8670d\"\n}"
+						},
+						{
+							"name": "no near branch",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"items\": [\n        {\n            \"item\": \"626cb702b9f062e84a56343e\",\n            \"quantity\": 1\n        },\n        {\n            \"item\": \"626cb71fb9f062e84a563444\",\n            \"quantity\": 1\n        },\n        {\n            \"item\": \"626cb736b9f062e84a56344a\",\n            \"quantity\": 1\n        }\n    ],\n    \"address\": \"626cbd2da2be2c44aa0eb1e3\",\n    \"restaurant\": \"626ca7812d67e6490efa6799\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/order",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"order"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "64"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"40-MPLTIDezfYeq/caxvrMiw31QdBw\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Apr 2022 05:47:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": true,\n    \"message\": \"No near branches for this restaurant \"\n}"
+						},
+						{
+							"name": "Wrong item id",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"items\": [\n        {\n            \"item\": \"626cb702b9f062e84a56343e\",\n            \"quantity\": 1\n        },\n        {\n            \"item\": \"626cb71fb9f062e84a563441\",\n            \"quantity\": 1\n        },\n        {\n            \"item\": \"626cb736b9f062e84a56344a\",\n            \"quantity\": 1\n        }\n    ],\n    \"address\": \"626cbd2da2be2c44aa0eb1e3\",\n    \"restaurant\": \"626ca7f02d67e6490efa679b\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/order",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"order"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "68"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"44-Tl/aTThnqKVoUHBJWPnFboxhPgI\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Apr 2022 05:56:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": true,\n    \"message\": \"Some item may not available, or not exist\"\n}"
+						},
+						{
+							"name": "wrong address",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"items\": [\n        {\n            \"item\": \"626cb702b9f062e84a56343e\",\n            \"quantity\": 1\n        },\n        {\n            \"item\": \"626cb71fb9f062e84a563441\",\n            \"quantity\": 1\n        },\n        {\n            \"item\": \"626cb736b9f062e84a56344a\",\n            \"quantity\": 1\n        }\n    ],\n    \"address\": \"626cbd2da2be2c44aa0eb1e2\",\n    \"restaurant\": \"626ca7f02d67e6490efa679b\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/order",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"order"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "70"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"46-0jTo9C8yFpBvzEESyk/yfqLYkF4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Apr 2022 05:57:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": true,\n    \"message\": \"address not found or not belong to the user\"\n}"
+						}
+					]
+				},
+				{
+					"name": "list orders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/order?status=pending&page=1&perpage=1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"order"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "pending"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "perpage",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "list orders",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:3000/api/order?status=pending&page=1&perpage=1",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"order"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "pending"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "perpage",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "951"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3b7-KgK+WRmP+T3T1KbhTAXybcDCopY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Apr 2022 07:03:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errro\": false,\n    \"orders\": [\n        {\n            \"_id\": \"626ccc552b1c0c0984b91a8a\",\n            \"branch\": {\n                \"_id\": \"626cbb24a2be2c44aa0eb1bd\",\n                \"name\": \"McD Branch 2\"\n            },\n            \"items\": [\n                {\n                    \"item\": {\n                        \"_id\": \"626cb702b9f062e84a56343e\",\n                        \"name\": \"Hamburger\",\n                        \"price\": 2.5,\n                        \"category\": {\n                            \"_id\": \"626ca32b408343b3a32b2822\",\n                            \"name\": \"Burger\"\n                        }\n                    },\n                    \"quantity\": 1,\n                    \"_id\": \"626ccc552b1c0c0984b91a8b\"\n                },\n                {\n                    \"item\": {\n                        \"_id\": \"626cb71fb9f062e84a563444\",\n                        \"name\": \"Cheese burger\",\n                        \"price\": 2.5,\n                        \"category\": {\n                            \"_id\": \"626ca32b408343b3a32b2822\",\n                            \"name\": \"Burger\"\n                        }\n                    },\n                    \"quantity\": 1,\n                    \"_id\": \"626ccc552b1c0c0984b91a8c\"\n                },\n                {\n                    \"item\": {\n                        \"_id\": \"626cb736b9f062e84a56344a\",\n                        \"name\": \"Big Mac\",\n                        \"price\": 5,\n                        \"category\": {\n                            \"_id\": \"626ca32b408343b3a32b2822\",\n                            \"name\": \"Burger\"\n                        }\n                    },\n                    \"quantity\": 1,\n                    \"_id\": \"626ccc552b1c0c0984b91a8d\"\n                }\n            ],\n            \"user\": \"626ca398408343b3a32b2829\",\n            \"address\": {\n                \"_id\": \"626cbd2da2be2c44aa0eb1e3\",\n                \"label\": \"Home\"\n            },\n            \"restaurant\": {\n                \"_id\": \"626ca7f02d67e6490efa679b\",\n                \"name\": \"McDonald\"\n            },\n            \"status\": \"pending\",\n            \"createdAt\": \"2022-04-30T05:42:45.283Z\",\n            \"updatedAt\": \"2022-04-30T05:42:45.283Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "cancel order",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/order/626df48dfcea3633f91ffdd4/cancel",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"order",
+								"626df48dfcea3633f91ffdd4",
+								"cancel"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "cancel order",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:3000/api/order/626df48dfcea3633f91ffdd4/cancel",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"order",
+										"626df48dfcea3633f91ffdd4",
+										"cancel"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "42"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2a-5Bnvb6F9d4inyMFUtqTZnf9+pos\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 01 May 2022 06:55:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": false,\n    \"message\": \"order canceled\"\n}"
+						}
+					]
+				},
+				{
+					"name": "get order info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/order/626df2010f5f2ce2379721c6",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"order",
+								"626df2010f5f2ce2379721c6"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get order info",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:3000/api/order/626df2010f5f2ce2379721c6",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"order",
+										"626df2010f5f2ce2379721c6"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "888"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"378-2Xlx6CQjM6IZFBfEc6/kwLbhnYY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 01 May 2022 07:44:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": false,\n    \"order\": {\n        \"branch\": {\n            \"address\": {\n                \"coordinates\": [\n                    33.893789,\n                    35.501777\n                ]\n            },\n            \"id\": \"626cbb63a2be2c44aa0eb1cb\",\n            \"name\": \"McD Branch 3\"\n        },\n        \"user\": {\n            \"id\": \"626ca0ab408343b3a32b2800\",\n            \"name\": \"Rami Shook App Admin\"\n        },\n        \"restaurant\": {\n            \"id\": \"626ca7f02d67e6490efa679b\",\n            \"name\": \"McDonald\"\n        },\n        \"_id\": \"626df2010f5f2ce2379721c6\",\n        \"items\": [\n            {\n                \"item\": {\n                    \"_id\": \"626cb736b9f062e84a56344a\",\n                    \"name\": \"Big Mac\",\n                    \"price\": 5,\n                    \"category\": \"626ca32b408343b3a32b2822\",\n                    \"available\": true,\n                    \"restaurant\": \"626ca7f02d67e6490efa679b\",\n                    \"__v\": 0\n                },\n                \"quantity\": 1,\n                \"_id\": \"626df2010f5f2ce2379721c7\"\n            },\n            {\n                \"item\": {\n                    \"_id\": \"626cb71fb9f062e84a563444\",\n                    \"name\": \"Cheese burger\",\n                    \"price\": 2.5,\n                    \"category\": \"626ca32b408343b3a32b2822\",\n                    \"available\": true,\n                    \"restaurant\": \"626ca7f02d67e6490efa679b\",\n                    \"__v\": 0\n                },\n                \"quantity\": 1,\n                \"_id\": \"626df2010f5f2ce2379721c8\"\n            }\n        ],\n        \"status\": \"rejected\",\n        \"createdAt\": \"2022-05-01T02:35:45.715Z\",\n        \"updatedAt\": \"2022-05-01T06:53:22.156Z\",\n        \"__v\": 0\n    },\n    \"totalPrice\": 7.5\n}"
+						}
+					]
+				},
+				{
+					"name": "order action",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/order/626df2010f5f2ce2379721c6/action/rejected",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"order",
+								"626df2010f5f2ce2379721c6",
+								"action",
+								"rejected"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "order action",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:3000/api/order/626df2010f5f2ce2379721c6/action/rejected",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"order",
+										"626df2010f5f2ce2379721c6",
+										"action",
+										"rejected"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "48"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"30-u9t4PvSsbESPHwfY/iveomEQY6E\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 01 May 2022 06:53:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": false,\n    \"message\": \"Order Status changed\"\n}"
+						},
+						{
+							"name": "order action",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:3000/api/order/626df2010f5f2ce2379721c6/action/rejected",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"order",
+										"626df2010f5f2ce2379721c6",
+										"action",
+										"rejected"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "48"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"30-u9t4PvSsbESPHwfY/iveomEQY6E\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 01 May 2022 07:45:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": false,\n    \"message\": \"Order Status changed\"\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
