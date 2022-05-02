@@ -30,7 +30,7 @@ router.post('/', async (req, res) => {
         message: 'Access token created successfully',
       });
     })
-    .catch((err) => res.status(err.statusCode).json({ err }));
+    .catch((err) => res.status(err.statusCode).json(err));
 });
 
 // logout
