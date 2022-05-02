@@ -38,8 +38,6 @@ router.delete('/', async (req, res) => {
   try {
     const { error } = refreshTokenBodyValidation(req.body);
     if (error) {
-      console.log(req.body);
-      console.log(error);
       return res
         .status(400)
         .json({ error: true, message: error.details[0].message });
