@@ -30,25 +30,26 @@ router.post('/', async (req, res) => {
         message: 'Access token created successfully',
       });
     })
-    .catch((err) => res.status(400).json(err));
+    .catch((err) => res.status(err.statusCode).json({ err }));
 });
 
 // logout
 router.delete('/', async (req, res) => {
   try {
-    const { error } = refreshTokenBodyValidation(req.get('x-access-token'));
-    if (error)
+    const { error } = refreshTokenBodyValidation(req.body);
+    if (error) {
+      console.log(req.body);
+      console.log(error);
       return res
         .status(400)
         .json({ error: true, message: error.details[0].message });
+    }
 
     const userToken = await UserToken.findOne({
-      token: req.get('x-access-token'),
+      token: req.body.refreshToken,
     });
     if (!userToken)
-      return res
-        .status(200)
-        .json({ error: false, message: 'Logged Out Sucessfully' });
+      return res.status(200).json({ error: false, message: 'Not Logged In' });
 
     await userToken.remove();
     res.status(200).json({ error: false, message: 'Logged Out Sucessfully' });
