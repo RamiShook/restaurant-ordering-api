@@ -16,7 +16,8 @@ describe('user', () => {
     await mongoose.disconnect();
     await mongoose.connection.close();
   });
-  let token = '';
+  let accessToken = '';
+  let refreshToken = '';
 
   const users = {
     user1: {
@@ -89,7 +90,10 @@ describe('user', () => {
       expect(statusCode).toBe(200);
       expect(body).toHaveProperty('error', false);
       expect(body).toHaveProperty('accessToken');
-      token = body.accessToken;
+      expect(body).toHaveProperty('refreshToken');
+
+      accessToken = body.accessToken;
+      refreshToken = body.refreshToken;
     });
   });
 
@@ -97,7 +101,7 @@ describe('user', () => {
     it('Since first signup should have role admin', async () => {
       const { statusCode, body } = await supertest(app)
         .get('/api/user')
-        .set('Authorization', token)
+        .set('Authorization', accessToken)
         .send();
       expect(statusCode).toBe(200);
       expect(body).toHaveProperty('error', false);
@@ -113,7 +117,41 @@ describe('user', () => {
       expect(statusCode).toBe(200);
       expect(body).toHaveProperty('error', false);
       expect(body).toHaveProperty('accessToken');
-      token = body.accessToken;
+      expect(body).toHaveProperty('refreshToken');
+      accessToken = body.accessToken;
+      refreshToken = body.refreshToken;
+    });
+  });
+
+  describe('user refresh token', () => {
+    it('should get 200 when send right refreshToken', async () => {
+      const { statusCode, body } = await supertest(app)
+        .post('/api/refreshToken')
+        .send({ refreshToken });
+      expect(statusCode).toBe(200);
+      expect(body).toHaveProperty('error', false);
+      expect(body).toHaveProperty('accessToken');
+      accessToken = body.accessToken;
+    });
+  });
+
+  describe('user refresh token', () => {
+    it('should get 400 when NOT including refreshToken', async () => {
+      const { statusCode, body } = await supertest(app)
+        .post('/api/refreshToken')
+        .send();
+      expect(statusCode).toBe(400);
+      expect(body).toHaveProperty('error', true);
+    });
+  });
+
+  describe('user refresh token', () => {
+    it('should get 401 when including WRONG refreshToken', async () => {
+      const { statusCode, body } = await supertest(app)
+        .post('/api/refreshToken')
+        .send({ refreshToken: 'SomeWrongRfToken' });
+      expect(statusCode).toBe(401);
+      expect(body).toHaveProperty('error', true);
     });
   });
 
@@ -121,7 +159,7 @@ describe('user', () => {
     it('Since NOT first signup should have role user', async () => {
       const { statusCode, body } = await supertest(app)
         .get('/api/user')
-        .set('Authorization', token)
+        .set('Authorization', accessToken)
         .send();
       expect(statusCode).toBe(200);
       expect(body).toHaveProperty('error', false);
