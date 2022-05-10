@@ -9,6 +9,8 @@ const menuRoutes = require('./routes/menu.route');
 const restaurantBranchRoutes = require('./routes/restaurantBranch.route');
 const restaurantRoutes = require('./routes/restaurant.route');
 const orderRoutes = require('./routes/order.route');
+const testRoutes = require('./routes/test.route');
+
 require('dotenv').config();
 
 function createServer() {
@@ -28,6 +30,15 @@ function createServer() {
   app.use('/api', restaurantBranchRoutes);
   app.use('/api', restaurantRoutes);
   app.use('/api', orderRoutes);
+  app.use('/api', testRoutes);
+
+  app.use((error, req, res, next) => {
+    console.log(error);
+    console.log('From Last next, ');
+    return res
+      .status(error.statusCode || 500)
+      .json({ message: error.message || 'internal server error' });
+  });
 
   return app;
 }

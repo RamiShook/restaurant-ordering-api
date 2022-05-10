@@ -28,7 +28,7 @@ const signup = async (req, res) => {
   }
 };
 
-const signin = async (req, res) => {
+const signin = async (req, res, next) => {
   try {
     const { error } = logInBodyValidation(req.body);
     if (error)
@@ -36,11 +36,7 @@ const signin = async (req, res) => {
         .status(400)
         .json({ error: true, message: error.details[0].message });
 
-    try {
-      user = await authService.signin(req);
-    } catch (e) {
-      return res.status(401).json({ error: true, message: e.message });
-    }
+    user = await authService.signin(req);
 
     const { accessToken, refreshToken } = await generateTokens(user);
 
@@ -51,7 +47,8 @@ const signin = async (req, res) => {
       message: 'Logged in sucessfully',
     });
   } catch (err) {
-    res.status(500).json({ error: true, message: 'Internal Server Error' });
+    console.log('error from catch in controller ' + err);
+    return next(err, req, res);
   }
 };
 module.exports = {
